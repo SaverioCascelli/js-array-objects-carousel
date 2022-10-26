@@ -9,10 +9,46 @@
     <script src="js/script.js"defer></script>
     <title>Carosello Array di Oggetti</title>
 </head>
-<body>
-    <div class="container >
+<body class="bg-dark">
+    <div class="container-fluid mt-5 " >
         <div class="row">
-            <div class="col">Prova</div>                
+            <div class="col">
+                <div class="album">
+                    <div class="top mx-auto overflow-hidden position-relative">
+                        <img class="sc-img" src="img/peru.jpg" alt="">
+                        <div class="abs-text position-absolute text-white text-end "  >
+                            <h4>Perù</h4>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, quod!</p>
+                        </div>
+                    </div>
+                    <div class="bottom mx-auto d-flex">
+                        <div class="img-preview active ">
+                            <img src="/img/peru.jpg" alt="">
+                        </div>
+                        <div class="img-preview">
+                            <img src="img/argentina.jpg" alt="">
+                        </div>
+                        <div class="img-preview">
+                            <img src="img/chile.jpg" alt="">
+                        </div>
+                        <div class="img-preview overflow-hidden">
+                            <img src="img/colombia.jpg" alt="">
+                        </div>
+                        <div class="img-preview">
+                            <img src="img/sweden.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>                
+        </div>
+        <div class="row">
+            <div class="col text-center my-5">
+                <button type="button" class="btn btn-primary">Inverti ordine di scorrimento </button>
+
+                <button type="button" class="btn btn-primary">Interrompi lo scorrimento</button>
+
+            </div>
+            
         </div>
     </div>
 </body>
