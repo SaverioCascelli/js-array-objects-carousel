@@ -67,3 +67,10 @@ function setActiveById(){
     scArr[currentPhotoId].classList.add("active");
 }
 
+function cicleCounter(bool){
+    const maxCounter = cities.length-1;
+    (bool) ? currentPhotoId++ : currentPhotoId--;
+    if (currentPhotoId > maxCounter) currentPhotoId = 0;
+    else if(currentPhotoId < 0) currentPhotoId = maxCounter-1;
+}
+

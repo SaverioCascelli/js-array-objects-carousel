@@ -31,8 +31,9 @@ img{
 }
 
 .abs-text{
-    right: 10%;
-    top: 10%;
+    right: 0%;
+    top: 0%;
+    padding: 5% 10% 5% 20%;
     font-weight: bold;
     text-shadow: 3px 3px 3px black ;
 }
