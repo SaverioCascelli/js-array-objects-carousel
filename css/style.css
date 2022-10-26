@@ -36,3 +36,25 @@ img{
     font-weight: bold;
     text-shadow: 3px 3px 3px black ;
 }
+
+.arrow{
+    top: 50%;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    transform: translate(0,-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, .45);
+    text-align: center;
+    font-size: 1.3rem;
+    cursor:pointer;
+}
+
+.arrow.right{
+    right:10px;
+}
+
+.arrow.left{
+    left:10px;
+}
