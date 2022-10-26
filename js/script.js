@@ -1,5 +1,7 @@
 const landscape = document.querySelector(".album .top");
-const imgRoll = document.querySelector(".album .bottom");
+const imgRoll = document.querySelector(".album .bottom #carousel");
+const btnLeft = document.querySelector(".arrow.left");
+const btnRight = document.querySelector(".arrow.right");
 
 const cities =[
     {
@@ -29,7 +31,17 @@ const cities =[
     }
 ]
 
+
 let currentPhotoId = 4;
+let iscourselToRight = true;
+
+btnLeft.addEventListener("click", function(){
+    cicleCounter(!iscourselToRight);  
+})
+
+btnRight.addEventListener("click", function(){
+    cicleCounter(iscourselToRight);
+})
 
 printImgInRoll();
 setId(cities)
@@ -63,7 +75,6 @@ function printPhotoById(id){
 
 function setActiveById(){
     const scArr = document.getElementsByClassName("img-preview");
-    console.log(scArr[currentPhotoId].classList);
     scArr[currentPhotoId].classList.add("active");
 }
 
@@ -71,6 +82,6 @@ function cicleCounter(bool){
     const maxCounter = cities.length-1;
     (bool) ? currentPhotoId++ : currentPhotoId--;
     if (currentPhotoId > maxCounter) currentPhotoId = 0;
-    else if(currentPhotoId < 0) currentPhotoId = maxCounter-1;
+    else if(currentPhotoId < 0) currentPhotoId = maxCounter;
 }
 
