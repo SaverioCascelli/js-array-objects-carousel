@@ -32,21 +32,21 @@ const cities =[
 ]
 
 
-let currentPhotoId = 4;
+let currentPhotoId = 0;
 let iscourselToRight = true;
-
-btnLeft.addEventListener("click", function(){
-    circleCarousel(false)
-})
-
-btnRight.addEventListener("click", function(){
-    circleCarousel(true)
-})
 
 init();
 
+btnLeft.addEventListener("click", function(){
+    cicleCarousel(false)
+})
 
-function circleCarousel(bool){
+btnRight.addEventListener("click", function(){
+    cicleCarousel(true)
+})
+
+
+function cicleCarousel(bool){
     removeActive(currentPhotoId);
     cicleCounter(bool);
     setActivePhoto();
@@ -58,6 +58,7 @@ function init(){
     printImgInRoll();
     printPhotoById(currentPhotoId);
     setActivePhoto();
+   
 }
 
 function setId(collection){
@@ -70,8 +71,29 @@ function getCityById(id){
 }
 
 function printImgInRoll(){
-    cities.forEach((city) => imgRoll.innerHTML += `<div class="img-preview">
-    <img src="/img/${city.img}" alt=""></div>`)
+    cities.forEach((city) => imgRoll.innerHTML += `
+    <div class="img-preview">
+        <img src="/img/${city.img}" alt=""></div>`);
+    
+}
+
+
+//************************************************************************* */
+//differenza tra array-like object e array
+function addOnClickSwitchId(){
+    const previewArr = document.getElementsByClassName("img-preview");
+
+    //Array.from() converte un array-like object in array così da poter usare .forEach()
+    const arr =Array.from(previewArr);
+    arr.forEach((element , index) => {
+        element.addEventListener("click",function(){
+            removeActive();
+            //setta l'indice della foto a quella clickata
+            currentPhotoId = cities[index].id;
+            setActivePhoto();
+            printPhotoById(currentPhotoId);
+        })
+    })
 }
 
 function printPhotoById(id){
@@ -83,6 +105,7 @@ function printPhotoById(id){
         <h2>${city.name}</h2>
         <p>${city.cityText}</p>
     </div>`
+    addOnClickSwitchId();
 }
 
 function setActivePhoto(){
