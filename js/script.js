@@ -28,9 +28,15 @@ const cities =[
 
 let currentPhotoId = 0;
 
+
+setId(cities)
+console.log(getCityById(1));
+
 function setId(collection){
     collection.forEach((city, index) => city.id = index);
 }
-console.log(cities);
-setId(cities)
-console.log(cities);
+
+function getCityById(id){
+    return cities.filter((city) => city.id === id);
+}
+
