@@ -36,21 +36,22 @@ let currentPhotoId = 4;
 let iscourselToRight = true;
 
 btnLeft.addEventListener("click", function(){
-    removeActive(currentPhotoId);
-    cicleCounter(!iscourselToRight);
-    setActivePhoto();  
-    printPhotoById(currentPhotoId);
+    circleCarousel(false)
 })
 
 btnRight.addEventListener("click", function(){
-    removeActive(currentPhotoId);
-    cicleCounter(iscourselToRight);
-    setActivePhoto();
-    printPhotoById(currentPhotoId);
+    circleCarousel(true)
 })
 
 init();
 
+
+function circleCarousel(bool){
+    removeActive(currentPhotoId);
+    cicleCounter(bool);
+    setActivePhoto();
+    printPhotoById(currentPhotoId);
+}
 
 function init(){
     setId(cities)
