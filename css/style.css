@@ -49,6 +49,7 @@ img{
     text-align: center;
     font-size: 1.3rem;
     cursor:pointer;
+    z-index: 50;
 }
 
 .arrow.right{

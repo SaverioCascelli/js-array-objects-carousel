@@ -1,3 +1,6 @@
+const landscape = document.querySelector(".album .top");
+const imgRoll = document.querySelector(".album .bottom");
+
 const cities =[
     {
         name: "Perù",
@@ -29,6 +32,7 @@ const cities =[
 let currentPhotoId = 0;
 
 
+printImgInRoll();
 setId(cities)
 console.log(getCityById(1));
 
@@ -38,5 +42,11 @@ function setId(collection){
 
 function getCityById(id){
     return cities.filter((city) => city.id === id);
+}
+
+function printImgInRoll(){
+    cities.forEach((city) => imgRoll.innerHTML += `<div class="img-preview">
+    <img src="/img/${city.img}" alt=""></div>`)
+    
 }
 
