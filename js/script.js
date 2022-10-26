@@ -36,17 +36,28 @@ let currentPhotoId = 4;
 let iscourselToRight = true;
 
 btnLeft.addEventListener("click", function(){
-    cicleCounter(!iscourselToRight);  
+    removeActive(currentPhotoId);
+    cicleCounter(!iscourselToRight);
+    setActivePhoto();  
+    printPhotoById(currentPhotoId);
 })
 
 btnRight.addEventListener("click", function(){
+    removeActive(currentPhotoId);
     cicleCounter(iscourselToRight);
+    setActivePhoto();
+    printPhotoById(currentPhotoId);
 })
 
-printImgInRoll();
-setId(cities)
-printPhotoById(currentPhotoId);
-setActiveById();
+init();
+
+
+function init(){
+    setId(cities)
+    printImgInRoll();
+    printPhotoById(currentPhotoId);
+    setActivePhoto();
+}
 
 function setId(collection){
     collection.forEach((city, index) => city.id = index);
@@ -73,7 +84,7 @@ function printPhotoById(id){
     </div>`
 }
 
-function setActiveById(){
+function setActivePhoto(){
     const scArr = document.getElementsByClassName("img-preview");
     scArr[currentPhotoId].classList.add("active");
 }
@@ -83,5 +94,10 @@ function cicleCounter(bool){
     (bool) ? currentPhotoId++ : currentPhotoId--;
     if (currentPhotoId > maxCounter) currentPhotoId = 0;
     else if(currentPhotoId < 0) currentPhotoId = maxCounter;
+}
+
+function removeActive(){
+    const previewArr = document.getElementsByClassName("img-preview")
+    previewArr[currentPhotoId].classList.remove("active");
 }
 
