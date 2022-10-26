@@ -2,7 +2,9 @@ const landscape = document.querySelector(".album .top");
 const imgRoll = document.querySelector(".album .bottom #carousel");
 const btnLeft = document.querySelector(".arrow.left");
 const btnRight = document.querySelector(".arrow.right");
-const btnSwitchCarousel = document.querySelector("#switch-carousel")
+const btnSwitchCarousel = document.querySelector("#switch-carousel");
+const bntToggleCarousel = document.querySelector("#toggle-carousel");
+var carouselEx;
 
 const cities =[
     {
@@ -35,6 +37,7 @@ const cities =[
 
 let currentPhotoId = 0;
 let iscourselToRight = true;
+let iscarouselOn = true;
 
 init();
 
@@ -52,9 +55,30 @@ btnSwitchCarousel.addEventListener("click" , function(){
     
 })
 
-setInterval(function(){
-    cicleCarousel(iscourselToRight);
-}, 2000)
+bntToggleCarousel.addEventListener("click", function(){
+    
+    if(iscarouselOn){
+        this.innerHTML = "Riprendi lo scorrimento";
+        stopCarousel()
+    }else {
+        startCarousel();
+        this.innerHTML = "Interrompi lo scorrimento";
+    }
+})
+
+
+
+function startCarousel(){
+    iscarouselOn = true;
+    carouselEx = setInterval(function(){
+        cicleCarousel(iscourselToRight);
+    }, 2000)
+}
+
+function stopCarousel(){
+    clearTimeout(carouselEx);
+    iscarouselOn = !iscarouselOn
+}
 
 
 function cicleCarousel(bool){
@@ -70,6 +94,7 @@ function init(){
     printPhotoById(currentPhotoId);
     setActivePhoto();
     addOnClickSwitchId();
+    startCarousel();
 }
 
 function setId(collection){
