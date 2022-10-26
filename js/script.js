@@ -26,5 +26,11 @@ const cities =[
     }
 ]
 
+let currentPhotoId = 0;
 
-
+function setId(collection){
+    collection.forEach((city, index) => city.id = index);
+}
+console.log(cities);
+setId(cities)
+console.log(cities);
