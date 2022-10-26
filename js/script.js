@@ -29,24 +29,41 @@ const cities =[
     }
 ]
 
-let currentPhotoId = 0;
-
+let currentPhotoId = 4;
 
 printImgInRoll();
 setId(cities)
-console.log(getCityById(1));
+printPhotoById(currentPhotoId);
+setActiveById();
 
 function setId(collection){
     collection.forEach((city, index) => city.id = index);
 }
 
 function getCityById(id){
-    return cities.filter((city) => city.id === id);
+    const cityIdArr = cities.filter((city) => city.id === id);
+    return cityIdArr[0]
 }
 
 function printImgInRoll(){
     cities.forEach((city) => imgRoll.innerHTML += `<div class="img-preview">
     <img src="/img/${city.img}" alt=""></div>`)
-    
+}
+
+function printPhotoById(id){
+
+    const city = getCityById(id);
+    landscape.innerHTML =`
+    <img class="sc-img" src="img/${city.img}" alt="${city.name}">
+    <div class="abs-text position-absolute text-white text-end "  >
+        <h2>${city.name}</h2>
+        <p>${city.cityText}</p>
+    </div>`
+}
+
+function setActiveById(){
+    const scArr = document.getElementsByClassName("img-preview");
+    console.log(scArr[currentPhotoId].classList);
+    scArr[currentPhotoId].classList.add("active");
 }
 
