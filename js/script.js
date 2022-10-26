@@ -2,6 +2,7 @@ const landscape = document.querySelector(".album .top");
 const imgRoll = document.querySelector(".album .bottom #carousel");
 const btnLeft = document.querySelector(".arrow.left");
 const btnRight = document.querySelector(".arrow.right");
+const btnSwitchCarousel = document.querySelector("#switch-carousel")
 
 const cities =[
     {
@@ -45,6 +46,16 @@ btnRight.addEventListener("click", function(){
     cicleCarousel(true)
 })
 
+btnSwitchCarousel.addEventListener("click" , function(){
+    
+    iscourselToRight = !iscourselToRight;
+    
+})
+
+setInterval(function(){
+    cicleCarousel(iscourselToRight);
+}, 2000)
+
 
 function cicleCarousel(bool){
     removeActive(currentPhotoId);
@@ -58,7 +69,7 @@ function init(){
     printImgInRoll();
     printPhotoById(currentPhotoId);
     setActivePhoto();
-   
+    addOnClickSwitchId();
 }
 
 function setId(collection){
@@ -88,6 +99,7 @@ function addOnClickSwitchId(){
     arr.forEach((element , index) => {
         element.addEventListener("click",function(){
             removeActive();
+            console.log(this);
             //setta l'indice della foto a quella clickata
             currentPhotoId = cities[index].id;
             setActivePhoto();
@@ -105,7 +117,7 @@ function printPhotoById(id){
         <h2>${city.name}</h2>
         <p>${city.cityText}</p>
     </div>`
-    addOnClickSwitchId();
+    
 }
 
 function setActivePhoto(){
